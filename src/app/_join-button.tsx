@@ -8,7 +8,7 @@ export function JoinButton() {
     <a
       href="https://docs.google.com/forms/d/e/1FAIpQLSftG0jao8Q8WxnwCipkPQR7a6z_x_4aFGvz9Z0MRXeHmaFSDA/viewform?usp=publish-editor"
       target="_blank"
-      className="group fixed bottom-10 left-1/2 z-50 flex -translate-x-1/2 items-center justify-center rounded-full bg-white/50 backdrop-blur-sm px-4 py-1.5 shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f]"
+      className="group fixed bottom-10 left-1/2 z-50 flex -translate-x-1/2 items-center justify-center rounded-full bg-white/80 backdrop-blur-sm px-4 py-1.5 shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f]"
     >
       <span
         className={cn(
@@ -23,7 +23,7 @@ export function JoinButton() {
           WebkitClipPath: "padding-box",
         }}
       />
-      <AnimatedGradientText className="font-bold text-center">
+      <AnimatedGradientText className="font-bold text-center whitespace-nowrap">
         <p>
           InTechに興味がでましたか？
         </p>
