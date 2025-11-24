@@ -18,7 +18,7 @@ export default function Home() {
           <Text>TECH.C.の様々な学年や専攻のメンバーが集まり、互いに良い刺激を与え合う、フラットで関わりやすいコミュニティです。お互いを尊重し合える仲間と出会え、学校生活がもっと楽しくなります。</Text>
         </Section>
         <Section>
-          <Heading level={2}>何してる？</Heading>
+          <Heading level={2}>何をしてる？</Heading>
           <Skeleton className="w-full h-40 bg-foreground/10 grid place-items-center">@ito</Skeleton>
         </Section>
         <Section>
@@ -28,7 +28,7 @@ export default function Home() {
           <RoundedPieChart />
         </Section>
         <Section>
-          <Heading level={2}>何してきた？</Heading>
+          <Heading level={2}>何をしてきた？</Heading>
           <Skeleton className="w-full h-40 bg-foreground/10 grid place-items-center">@ito</Skeleton>
         </Section>
         <JoinButton />
