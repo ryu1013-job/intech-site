@@ -1,13 +1,10 @@
 "use client";
 
-import type { ComponentProps } from "react";
 import { Label, LabelList, Pie, PieChart } from "recharts";
 
 import {
   ChartConfig,
   ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
 } from "~/components/ui/chart";
 
 export const description = "A pie chart with a label list";
@@ -58,18 +55,6 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-type TooltipFormatter = NonNullable<
-  ComponentProps<typeof ChartTooltipContent>["formatter"]
->;
-
-const tooltipFormatter: TooltipFormatter = (value, name) => {
-  const label = typeof name === "string" ? name : String(name ?? "");
-  const rawValue = Array.isArray(value) ? value[0] : value;
-  const numericValue =
-    typeof rawValue === "number" ? rawValue : Number(rawValue ?? 0);
-  return `${label}：${numericValue}%`;
-};
-
 const PIE_CHARTS = [
   {
     title: "学年構成",
@@ -96,15 +81,6 @@ export function RoundedPieChart() {
             className="aspect-square w-full max-h-[300px]"
           >
             <PieChart>
-              <ChartTooltip
-                cursor={false}
-                content={
-                  <ChartTooltipContent
-                    labelKey={chart.labelKey}
-                    formatter={tooltipFormatter}
-                  />
-                }
-              />
               <Pie
                 data={chart.data}
                 innerRadius={40}
