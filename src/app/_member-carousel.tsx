@@ -26,7 +26,7 @@ const MemberCard = ({ name, description, badges, image, sns }: Member) => (
         <div className="flex items-center gap-3">
           {image ? (
             <Image
-              className="rounded-xl border"
+              className="rounded-2xl border"
               src={image.src}
               alt={image.alt}
               width={60}
