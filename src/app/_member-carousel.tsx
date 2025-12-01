@@ -1,17 +1,9 @@
 "use client"
 
-import Autoplay from "embla-carousel-autoplay"
 import Image from "next/image"
-import { useRef } from "react"
 import { Badge } from "~/components/ui/badge"
 import { Card, CardContent } from "~/components/ui/card"
-import {
-  Carousel,
-  CarouselButton,
-  CarouselContent,
-  CarouselHandler,
-  CarouselItem,
-} from "~/components/ui/carousel"
+import { Marquee } from "~/components/ui/marquee"
 import { Skeleton } from "~/components/ui/skeleton"
 import { Text } from "~/components/ui/text"
 
@@ -44,6 +36,7 @@ const MEMBERS: Member[] = [
       src: "/member/naoki.webp",
       alt: "えぬこじの写真",
     },
+    sns: "https://x.com/nka21dev"
   },
   {
     name: "ねこみ",
@@ -53,6 +46,7 @@ const MEMBERS: Member[] = [
       src: "/member/nekomi.png",
       alt: "えぬこじの写真",
     },
+    sns: "https://x.com/88_49"
   },
   {
     name: "神父",
@@ -72,63 +66,70 @@ const MEMBERS: Member[] = [
       src: "/member/ryu.png",
       alt: "ryuの写真",
     },
+    sns: "https://x.com/_ryu1013"
   },
 ]
 
+const MemberCard = ({ name, description, badges, image, sns }: Member) => (
+  <Card className="flex h-full flex-col max-w-md min-w-xs" key={name}>
+    <CardContent className="flex h-full flex-col gap-4">
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-3">
+          {image ? (
+            <Image
+              className="rounded-xl border"
+              src={image.src}
+              alt={image.alt}
+              width={60}
+              height={60}
+            />
+          ) : (
+            <Skeleton className="size-[60px] rounded-xl border bg-foreground/10" />
+          )}
+          <p className="text-lg font-semibold">{name}</p>
+        </div>
+        {sns && (
+          <a href={sns} target="_blank" rel="noopener noreferrer">
+            <Image
+              src="/x.png"
+              alt="X Logo"
+              width={16}
+              height={16}
+            />
+          </a>
+        )}
+      </div>
+      <div className="flex flex-1 flex-col gap-2">
+        <Text>{description}</Text>
+        <div className="flex flex-wrap gap-2">
+          {badges.map((badge, index) => (
+            <Badge key={`${name}-${badge}-${index}`} variant="outline">
+              {badge}
+            </Badge>
+          ))}
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+)
+
 export function MemberCarousel() {
-  const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: true }))
-
   return (
-    <Carousel
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      plugins={[plugin.current as any]}
-      opts={{
-        loop: true,
-        align: "center",
-      }}
-      className="w-full"
-    >
-      <CarouselContent>
+    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+      <Marquee pauseOnHover className="[--duration:20s]">
         {MEMBERS.map((member) => (
-          <CarouselItem key={member.name} className="basis-4/5 sm:basis-3/5">
-            <Card className="flex h-full flex-col">
-              <CardContent className="flex h-full flex-col gap-4">
-                <div className="flex items-center gap-3">
-                  {member.image ? (
-                    <Image
-                      className="rounded-xl border"
-                      src={member.image.src}
-                      alt={member.image.alt}
-                      width={60}
-                      height={60}
-                    />
-                  ) : (
-                    <Skeleton className="size-[60px] rounded-xl border bg-foreground/10" />
-                  )}
-                  <p className="text-lg font-semibold">{member.name}</p>
-                </div>
-                <div className="flex flex-1 flex-col gap-2">
-                  <Text>{member.description}</Text>
-                  <div className="flex flex-wrap gap-2">
-                    {member.badges.map((badge, index) => (
-                      <Badge key={`${member.name}-${badge}-${index}`} variant="outline">
-                        {badge}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </CarouselItem>
+          <MemberCard key={member.name} {...member} />
         ))}
-      </CarouselContent>
-
-      <CarouselHandler>
-        <CarouselButton segment="previous" className="cursor-pointer" />
-        <CarouselButton segment="next" className="cursor-pointer" />
-      </CarouselHandler>
-    </Carousel>
+      </Marquee>
+      {MEMBERS.length > 5 && (
+        <Marquee reverse pauseOnHover className="[--duration:20s]">
+          {MEMBERS.map((member) => (
+            <MemberCard key={member.name} {...member} />
+          ))}
+        </Marquee>
+      )}
+      <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/5 bg-linear-to-r"></div>
+      <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/5 bg-linear-to-l"></div>
+    </div >
   )
 }
