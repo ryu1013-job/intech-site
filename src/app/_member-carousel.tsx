@@ -23,6 +23,7 @@ type Member = {
     src: string
     alt: string
   }
+  sns?: string
 }
 
 const MEMBERS: Member[] = [
@@ -45,23 +46,31 @@ const MEMBERS: Member[] = [
     },
   },
   {
-    name: "社長",
-    description: "社長からのありがたいお言葉。",
-    badges: ["社長", "社長", "社長"],
+    name: "ねこみ",
+    description: "学年関係なくおはなししてて微笑ましいなっておもう〜みんなおもしろくて優しい方々！",
+    badges: ["締切とおえかきしてるひと", "言語化むずいって", "アイスを食べましょ！"],
+    image: {
+      src: "/member/nekomi.png",
+      alt: "えぬこじの写真",
+    },
   },
   {
     name: "神父",
-    description: "神父からのありがたいお言葉。",
-    badges: ["神父", "神父", "神父"],
+    description: "ここはきっと、TECH.C.の梁山泊。あったかくて楽しくて、真剣になれる場所。",
+    badges: ["アニメ科", "祝福する人", "メカクレ愛好家"],
+    image: {
+      src: "/member/shinpu.png",
+      alt: "神父の写真",
+    },
   },
   {
-    name: "Kenshin Okano",
+    name: "ryu",
     description:
-      "課題と気付きに満ち、私を前に進めてくれる場。実験場であり、修練場。それがInTech。",
-    badges: ["服の装い方", "本質に根ざしたデザイン", "構造志向"],
+      "ボドゲ楽しいよ！",
+    badges: ["エンジニア"],
     image: {
-      src: "/member/okano.webp",
-      alt: "Kenshin Okanoの写真",
+      src: "/member/ryu.png",
+      alt: "ryuの写真",
     },
   },
 ]
