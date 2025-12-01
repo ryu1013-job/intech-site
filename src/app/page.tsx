@@ -6,7 +6,6 @@ import { SparklesText } from "~/components/ui/sparkles-text";
 import { Text } from "~/components/ui/text";
 import { MemberCarousel } from "./_member-carousel";
 import { RoundedPieChart } from "./_member-pie-chart";
-import { JoinButton } from "./_join-button";
 
 export default function Home() {
   return (
@@ -31,7 +30,7 @@ export default function Home() {
           <Heading level={2}>何をしてきた？</Heading>
           <Skeleton className="w-full h-40 bg-foreground/10 grid place-items-center">@ito</Skeleton>
         </Section>
-        <JoinButton />
+        {/* <JoinButton /> */}
       </main>
     </Container>
   );
