@@ -6,6 +6,7 @@ import { Card, CardContent } from "~/components/ui/card"
 import { Marquee } from "~/components/ui/marquee"
 import { Skeleton } from "~/components/ui/skeleton"
 import { Text } from "~/components/ui/text"
+import { MEMBERS } from "~/const/menbers"
 
 type Member = {
   name: string
@@ -17,58 +18,6 @@ type Member = {
   }
   sns?: string
 }
-
-const MEMBERS: Member[] = [
-  {
-    name: "やま",
-    description: "誰も憚らず“自分”でいられる場所を作りたい。それが私の想い。",
-    badges: ["エンジニア", "価値観ドリブン", "ラーメン好き！"],
-    image: {
-      src: "/member/koryu.webp",
-      alt: "やまの写真",
-    },
-  },
-  {
-    name: "えぬこじ",
-    description: "自分の居場所であり、みんなの居場所。",
-    badges: ["創設者", "人生は流しそうめん", "出会いを大切に"],
-    image: {
-      src: "/member/naoki.webp",
-      alt: "えぬこじの写真",
-    },
-    sns: "https://x.com/nka21dev"
-  },
-  {
-    name: "ねこみ",
-    description: "学年関係なくおはなししてて微笑ましいなっておもう〜みんなおもしろくて優しい方々！",
-    badges: ["締切とおえかきしてるひと", "言語化むずいって", "アイスを食べましょ！"],
-    image: {
-      src: "/member/nekomi.png",
-      alt: "えぬこじの写真",
-    },
-    sns: "https://x.com/88_49"
-  },
-  {
-    name: "神父",
-    description: "ここはきっと、TECH.C.の梁山泊。あったかくて楽しくて、真剣になれる場所。",
-    badges: ["アニメ科", "祝福する人", "メカクレ愛好家"],
-    image: {
-      src: "/member/shinpu.png",
-      alt: "神父の写真",
-    },
-  },
-  {
-    name: "ryu",
-    description:
-      "ボドゲ楽しいよ！",
-    badges: ["エンジニア"],
-    image: {
-      src: "/member/ryu.png",
-      alt: "ryuの写真",
-    },
-    sns: "https://x.com/_ryu1013"
-  },
-]
 
 const MemberCard = ({ name, description, badges, image, sns }: Member) => (
   <Card className="flex h-full flex-col max-w-md min-w-xs" key={name}>
