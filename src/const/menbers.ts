@@ -72,6 +72,7 @@ export const MEMBERS = [
       src: "/member/sakuyathx.png",
       alt: "sakuyathxの写真",
     },
+    sns: "https://x.com/SAKUYA_RL"
   },
   // {
   //   name: "",
