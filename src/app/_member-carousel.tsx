@@ -65,13 +65,13 @@ const MemberCard = ({ name, description, badges, image, sns }: Member) => (
 export function MemberCarousel() {
   return (
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover className="[--duration:20s]">
+      <Marquee pauseOnHover>
         {MEMBERS.map((member) => (
           <MemberCard key={member.name} {...member} />
         ))}
       </Marquee>
       {MEMBERS.length > 5 && (
-        <Marquee reverse pauseOnHover className="[--duration:20s]">
+        <Marquee reverse pauseOnHover className="[--duration:30s]">
           {MEMBERS.map((member) => (
             <MemberCard key={member.name} {...member} />
           ))}
