@@ -146,3 +146,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+.dots {
+  background-color: var(--background);
+  background-image: radial-gradient(circle, color-mix(in oklch, var(--muted-foreground) 30%, transparent) 1px, transparent 1px),
+    radial-gradient(circle, color-mix(in oklch, var(--muted-foreground) 30%, transparent) 1px, transparent 1px);
+  /* background-position: 0 0, 10px 20px;
+  background-size: 20px 40px; */
+   background-position: 0 0;
+  background-size: 20px 20px;
+}

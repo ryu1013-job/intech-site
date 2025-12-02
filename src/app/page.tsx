@@ -10,7 +10,7 @@ import { RoundedPieChart } from "./_member-pie-chart";
 export default function Home() {
   return (
     <Container>
-      <main className="min-h-screen font-sans bg-white dark:bg-black flex flex-col p-4 py-7 sm:p-16 gap-8">
+      <main className="min-h-screen font-sans flex flex-col p-4 py-7 sm:p-16 gap-8">
         <SparklesText className="text-4xl" sparklesCount={6}>InTech</SparklesText>
         <Section>
           <Heading level={2}>InTechって何？</Heading>

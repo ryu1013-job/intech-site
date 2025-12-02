@@ -5,8 +5,8 @@ import { Badge } from "~/components/ui/badge"
 import { Card, CardContent } from "~/components/ui/card"
 import { Marquee } from "~/components/ui/marquee"
 import { Skeleton } from "~/components/ui/skeleton"
-import { Text } from "~/components/ui/text"
 import { MEMBERS } from "~/const/menbers"
+import { cn } from "~/lib/utils"
 
 type Member = {
   name: string
@@ -20,7 +20,7 @@ type Member = {
 }
 
 const MemberCard = ({ name, description, badges, image, sns }: Member) => (
-  <Card className="flex h-full flex-col max-w-md min-w-xs" key={name}>
+  <Card className="flex h-full flex-col sm:max-w-md sm:min-w-xs bg-background" key={name}>
     <CardContent className="flex h-full flex-col gap-4">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
@@ -49,10 +49,14 @@ const MemberCard = ({ name, description, badges, image, sns }: Member) => (
         )}
       </div>
       <div className="flex flex-1 flex-col gap-2">
-        <Text>{description}</Text>
+        <p className="text-xs/6">{description}</p>
         <div className="flex flex-wrap gap-2">
           {badges.map((badge, index) => (
-            <Badge key={`${name}-${badge}-${index}`} variant="outline">
+            <Badge
+              key={`${name}-${badge}-${index}`}
+              variant="outline"
+              className={cn(index >= 2 && "hidden sm:inline-flex")}
+            >
               {badge}
             </Badge>
           ))}
@@ -70,13 +74,15 @@ export function MemberCarousel() {
           <MemberCard key={member.name} {...member} />
         ))}
       </Marquee>
-      {MEMBERS.length > 5 && (
-        <Marquee reverse pauseOnHover className="[--duration:30s]">
-          {MEMBERS.map((member) => (
-            <MemberCard key={member.name} {...member} />
-          ))}
-        </Marquee>
-      )}
+      <div className="hidden sm:block">
+        {MEMBERS.length > 5 && (
+          <Marquee reverse pauseOnHover className="[--duration:30s]">
+            {MEMBERS.map((member) => (
+              <MemberCard key={member.name} {...member} />
+            ))}
+          </Marquee>
+        )}
+      </div>
       <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/5 bg-linear-to-r"></div>
       <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/5 bg-linear-to-l"></div>
     </div >
