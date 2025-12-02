@@ -6,6 +6,7 @@ import {
   ChartConfig,
   ChartContainer,
 } from "~/components/ui/chart";
+import { MEMBER_GRADE_COUNTS, MEMBER_MAJOR_COUNTS } from "~/const/menbers";
 
 const BASE_CHART_COLORS = [
   "var(--chart-1)",
@@ -29,25 +30,13 @@ type MajorDatum = {
   strokeColor: string
 }
 
-const GRADE_DATA: GradeDatum[] = [
-  { grade: "1年生", count: 20 },
-  { grade: "2年生", count: 11 },
-  { grade: "3年生", count: 8 },
-  { grade: "4年生", count: 10 },
-  { grade: "その他", count: 3 },
-].map((item, index) => ({
+const GRADE_DATA: GradeDatum[] = MEMBER_GRADE_COUNTS.map((item, index) => ({
   ...item,
   strokeColor: BASE_CHART_COLORS[index % BASE_CHART_COLORS.length],
 }));
 
 // 専攻
-const MAJOR_DATA: MajorDatum[] = [
-  { major: "IT・AI", count: 25 },
-  { major: "CG・映像", count: 13 },
-  { major: "イラスト・\nアニメ", count: 8 },
-  { major: "ゲーム", count: 3 },
-  { major: "その他", count: 3 },
-].map((item, index) => ({
+const MAJOR_DATA: MajorDatum[] = MEMBER_MAJOR_COUNTS.map((item, index) => ({
   ...item,
   strokeColor: BASE_CHART_COLORS[index % BASE_CHART_COLORS.length],
 }));

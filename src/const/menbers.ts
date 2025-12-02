@@ -95,3 +95,19 @@ export const MEMBERS = [
     sns: "https://x.com/_ryu1013"
   },
 ]
+
+export const MEMBER_GRADE_COUNTS = [
+  { grade: "1年生", count: 20 },
+  { grade: "2年生", count: 11 },
+  { grade: "3年生", count: 8 },
+  { grade: "4年生", count: 10 },
+  { grade: "その他", count: 3 },
+] as const
+
+export const MEMBER_MAJOR_COUNTS = [
+  { major: "IT・AI", count: 25 },
+  { major: "CG・映像", count: 13 },
+  { major: "イラスト・\nアニメ", count: 8 },
+  { major: "ゲーム", count: 3 },
+  { major: "その他", count: 3 },
+] as const
