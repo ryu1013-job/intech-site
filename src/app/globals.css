@@ -156,3 +156,16 @@
    background-position: 0 0;
   background-size: 20px 20px;
 }
+
+.marquee-scroll {
+  scrollbar-width: none;
+}
+
+.marquee-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+[data-touching="true"] .animate-marquee,
+[data-touching="true"] .animate-marquee-vertical {
+  animation-play-state: paused !important;
+}

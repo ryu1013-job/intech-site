@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import { Badge } from "~/components/ui/badge"
 import { Card, CardContent } from "~/components/ui/card"
@@ -20,7 +21,7 @@ type Member = {
 }
 
 const MemberCard = ({ name, description, badges, image, sns }: Member) => (
-  <Card className="flex h-full flex-col sm:max-w-md sm:min-w-xs bg-background" key={name}>
+  <Card className="flex h-full flex-col max-w-md sm:min-w-xs bg-background" key={name}>
     <CardContent className="flex h-full flex-col gap-4">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
@@ -67,9 +68,24 @@ const MemberCard = ({ name, description, badges, image, sns }: Member) => (
 )
 
 export function MemberCarousel() {
+  const [isTouching, setIsTouching] = useState(false)
+
+  const handleTouchStart = () => setIsTouching(true)
+  const handleTouchEnd = () => setIsTouching(false)
+
   return (
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover>
+      <Marquee
+        pauseOnHover
+        className={cn(
+          "marquee-scroll overflow-x-auto sm:overflow-hidden touch-pan-x",
+          "[-webkit-overflow-scrolling:touch]"
+        )}
+        data-touching={isTouching}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
+      >
         {MEMBERS.map((member) => (
           <MemberCard key={member.name} {...member} />
         ))}
